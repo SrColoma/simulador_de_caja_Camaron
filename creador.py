@@ -7,15 +7,8 @@ import time
 url_addValores = "https://daserldsli.execute-api.us-west-1.amazonaws.com/camaronAddValores"
 url_getBoxConfig = "https://daserldsli.execute-api.us-west-1.amazonaws.com/camaronGetBoxConfig"
 
-
-# Hacer la solicitud GET al endpoint
-response = requests.get(url_getBoxConfig)
-
-# Obtener el JSON de la respuesta
-json_data = response.json()
-
 # Acceder a los valores del JSON
-frecuencia = json_data['body']['frecuencia']
+frecuencia = 120
 
 # Valores iniciales de la estructura
 values = {
@@ -34,6 +27,7 @@ headers = {
 }
 
 def cambiar_configuracion():
+    global frecuencia
     resp = requests.get(url_getBoxConfig)
 
     # Obtener el JSON de la respuesta
